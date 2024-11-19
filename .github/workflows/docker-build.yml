@@ -33,7 +33,7 @@ jobs:
     - name: Package code
       run: |
         mkdir -p release_package
-        cp -r *.py Dockerfile requirements.txt release_package/
+        cp -r *.py Dockerfile release_package/
         tar -czvf release_package.tar.gz -C release_package .
 
     - name: Upload package to GitHub release

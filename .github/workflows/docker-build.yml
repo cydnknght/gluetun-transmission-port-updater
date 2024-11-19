@@ -29,3 +29,17 @@ jobs:
         tags: |
           kdrmdsrvr/gluetun-transmission-port-updater:latest
           kdrmdsrvr/gluetun-transmission-port-updater:${{ github.ref_name }}
+
+    - name: Package code
+      run: |
+        mkdir -p release_package
+        cp -r *.py Dockerfile requirements.txt release_package/
+        tar -czvf release_package.tar.gz -C release_package .
+
+    - name: Upload package to GitHub release
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./release_package.tar.gz
+        asset_name: release_package.tar.gz
+        asset_content_type: application/gzip

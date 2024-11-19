@@ -43,3 +43,5 @@ jobs:
         asset_path: ./release_package.tar.gz
         asset_name: release_package.tar.gz
         asset_content_type: application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
